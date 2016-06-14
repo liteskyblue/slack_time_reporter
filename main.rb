@@ -12,7 +12,7 @@ def send_message
   esa_team_name = ENV['ESA_TEAM_NAME']
   esa_template_id = ENV['ESA_TEMPLATE_ID']
   url = "https://#{esa_team_name}.esa.io/posts/new?template_post_id=#{esa_template_id}"
-  message = "@here そろそろ終了時間です。\nKWL 振り返りを書きましょう\n#{url}"
+  message = "そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{url}"
   Slack.chat_postMessage(text: message, channel: 'benkyo')
 end
 
