@@ -1,7 +1,7 @@
 describe TimeReporter do
   describe 'benkyo day or time' do
     let(:friday) { Time.local(2016, 6, 10) }
-    let(:benkyo_day) { Time.local(2016, 6, 25) }
+    let(:benkyo_day) { Time.local(2016, 6, 25) } # week of month % 2 == 0 && Suturday
     let(:sunday) { Time.local(2016, 6, 12) }
 
     it 'not benkyo day' do
