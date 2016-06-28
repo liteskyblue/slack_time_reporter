@@ -32,7 +32,7 @@ class TimeReporter
       4 => '木',
       5 => '金',
       6 => '土'
-    }[(Date.today.cweek - 1).modulo(7)]
+    }[Date.today.cwday.modulo(7)]
   end
 
   def benkyo_day?
@@ -42,7 +42,7 @@ class TimeReporter
 
   def end_time?
     hour = Time.now.hour.eql? 15
-    min = (20...29).cover?(Time.now.min)
+    min = (20..29).cover?(Time.now.min)
     hour && min
   end
 end
