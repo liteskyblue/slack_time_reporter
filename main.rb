@@ -20,6 +20,7 @@ class TimeReporter
     esa_template_id = ENV['ESA_TEMPLATE_ID']
     url = "https://#{esa_team_name}.esa.io/posts/new?template_post_id=#{esa_template_id}"
     message = "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{url}"
+    slack_notifier.ping(message)
   end
 
   def week_day
