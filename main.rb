@@ -1,19 +1,13 @@
 require 'dotenv'
 Dotenv.load
-require 'slack'
 require 'date'
 require 'week_of_month'
-
-Slack.configure do |config|
-  config.token = ENV['SLACK_TOKEN']
-end
 
 def send_message
   esa_team_name = ENV['ESA_TEAM_NAME']
   esa_template_id = ENV['ESA_TEMPLATE_ID']
   url = "https://#{esa_team_name}.esa.io/posts/new?template_post_id=#{esa_template_id}"
   message = "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{url}"
-  Slack.chat_postMessage(text: message, channel: 'benkyo')
 end
 
 def week_day
