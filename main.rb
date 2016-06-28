@@ -2,6 +2,16 @@ require 'dotenv'
 Dotenv.load
 require 'date'
 require 'week_of_month'
+require 'slack-notifier'
+
+def slack_notifier
+  Slack::Notifier.new(
+    ENV['WEBHOOK_URL'],
+    channel: 'benkyo',
+    username: 'time-reporter',
+    icon_url: ENV['BOT_ICON_URL']
+  )
+end
 
 def send_message
   esa_team_name = ENV['ESA_TEAM_NAME']
