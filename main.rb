@@ -1,8 +1,5 @@
-require 'dotenv'
-Dotenv.load
-require 'date'
-require 'week_of_month'
-require 'slack-notifier'
+require 'bundler'
+Bundler.require
 
 class TimeReporter
   def slack_notifier
