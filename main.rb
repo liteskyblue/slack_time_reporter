@@ -1,6 +1,13 @@
 require 'bundler'
 Bundler.require
 
+# Not includes `--without development`
+development_environment = !ENV['BUNDLE_WITHOUT'].to_s.include?('development')
+if development_environment
+  require 'dotenv'
+  Dotenv.load
+end
+
 class TimeReporter
   def slack_notifier
     Slack::Notifier.new(
