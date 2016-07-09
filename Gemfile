@@ -9,4 +9,5 @@ group :development, :test do
   gem 'timecop'
   gem 'guard'
   gem 'guard-rspec'
+  gem 'dotenv'
 end
