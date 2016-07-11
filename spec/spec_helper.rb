@@ -16,7 +16,7 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require_relative '../main'
+require_relative '../time_reporter'
 require 'timecop'
 
 RSpec.configure do |config|
