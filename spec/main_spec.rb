@@ -24,9 +24,9 @@ describe TimeReporter do
     end
 
     it 'benkyo end time' do
-      Timecop.freeze(2016, 6, 25, 15, 30)
-      (20..29).each do |min|
-        Timecop.travel(Time.local(2016, 6, 25, 15, min))
+      Timecop.freeze(benkyo_day)
+      (0..9).each do |n|
+        Timecop.travel(benkyo_day + n.minutes)
         expect(TimeReporter.new.end_time?).to be_truthy
       end
     end
