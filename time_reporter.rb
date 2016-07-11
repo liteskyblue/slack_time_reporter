@@ -32,6 +32,7 @@ class TimeReporter
     return if (print_make_day? && remind_time?).eql? false
     url = "#{ESA_TEMPLATE_URL_FOR}#{ENV['ESA_CLASS_TEMPLATE_ID']}"
     message = "@gouf 勉強会のネタ書いた？\nまだなら書きましょう！\n#{url}"
+    slack_notifier.ping(message)
   end
 
   def week_day
