@@ -1,3 +1,6 @@
+require 'active_support'
+require 'active_support/core_ext'
+
 describe TimeReporter do
   describe 'benkyo day or time' do
     let(:friday) { Time.local(2016, 6, 10) }
