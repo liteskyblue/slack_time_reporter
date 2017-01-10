@@ -4,7 +4,7 @@ require 'active_support/core_ext'
 describe TimeReporter do
   describe 'benkyo day or time' do
     let(:friday) { Time.local(2016, 6, 10) }
-    let(:benkyo_day) { Time.local(2016, 6, 25, 15, 20) } # week of month % 2 == 0 && Suturday
+    let(:benkyo_day) { Time.local(2016, 6, 25, 15, 20) } # week of month % 2 == 0 && Saturday
     let(:sunday) { Time.local(2016, 6, 12) }
 
     it 'not benkyo day' do
