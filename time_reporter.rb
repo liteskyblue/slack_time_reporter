@@ -23,7 +23,7 @@ class TimeReporter
   end
 
   def send_message
-    return if (benkyo_day? && end_time?).eql? false
+    return if (benkyo_day? && end_time?).eql?(false)
     esa_template_id = ENV['ESA_TEMPLATE_ID']
     message = "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{ESA_KWL_TEMPLATE}"
     slack_notifier.ping(message)
@@ -55,7 +55,7 @@ class TimeReporter
   end
 
   def end_time?
-    hour = Time.now.hour.eql? 15
+    hour = Time.now.hour.eql?(15)
     min = (20..29).cover?(Time.now.min)
     hour && min
   end
@@ -67,7 +67,7 @@ class TimeReporter
   end
 
   def remind_time?
-    hour = Time.now.hour.eql? 12
+    hour = Time.now.hour.eql?(12)
     min = (20..29).cover?(Time.now.min)
     hour && min
   end
