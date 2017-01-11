@@ -61,6 +61,7 @@ class TimeReporter
   end
 
   def print_make_day?
+    # 奇数週の土曜日
     week_of_month = Date.today.week_of_month.modulo(2).eql?(1)
     week_of_month && week_day.eql?('土')
   end
