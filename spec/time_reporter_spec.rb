@@ -6,11 +6,12 @@ ENV['ESA_CLASS_TEMPLATE_ID'] = '1'
 ENV['ESA_KWL_TEMPLATE_ID'] = '2'
 
 describe TimeReporter do
-  describe 'benkyo day or time' do
-    let(:friday) { Time.local(2016, 6, 10) }
-    let(:benkyo_day) { Time.local(2016, 6, 25, 15, 20) } # week of month % 2 == 0 && Saturday
-    let(:sunday) { Time.local(2016, 6, 12) }
+  let(:friday) { Time.local(2016, 6, 10) }
+  let(:print_make_day) { Time.local(2016, 6, 4, 12, 20) }
+  let(:benkyo_day) { Time.local(2016, 6, 25, 15, 20) } # week of month % 2 == 0 && Saturday
+  let(:sunday) { Time.local(2016, 6, 12) }
 
+  describe 'benkyo day or time' do
     it 'not benkyo day' do
       Timecop.freeze(friday)
       expect(TimeReporter.new.benkyo_day?).to be_falsy
@@ -37,9 +38,6 @@ describe TimeReporter do
   end
 
   describe 'remind print make day or time' do
-    let(:sunday) { Time.local(2016, 6, 12) }
-    let(:print_make_day) { Time.local(2016, 6, 4, 12, 20) }
-
     it 'not remind day' do
       Timecop.freeze(sunday)
       expect(TimeReporter.new.print_make_day?).to be_falsy
