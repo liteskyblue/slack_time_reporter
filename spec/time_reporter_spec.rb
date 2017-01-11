@@ -58,4 +58,42 @@ describe TimeReporter do
 
     after { Timecop.return }
   end
+
+  describe 'notify message' do
+    let(:slack_notifier_mock) { double('Slack::Notifier') }
+
+    let(:class_message) do
+      url = "#{TimeReporter::ESA_TEMPLATE_URL_FOR}#{ENV['ESA_CLASS_TEMPLATE_ID']}"
+      "@gouf 勉強会のネタ書いた？\nまだなら書きましょう！\n#{url}"
+    end
+
+    let(:kwl_message) do
+      url = "#{TimeReporter::ESA_TEMPLATE_URL_FOR}#{ENV['ESA_KWL_TEMPLATE_ID']}"
+      "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{url}"
+    end
+
+    let!(:time_reporter) { TimeReporter.new }
+
+    before do
+      allow(time_reporter).to receive(:slack_notifier).and_return(slack_notifier_mock)
+    end
+
+    subject { time_reporter }
+
+    it 'sent with KWL template url' do
+      Timecop.freeze(benkyo_day)
+      allow(slack_notifier_mock).to receive(:ping).with(kwl_message)
+
+      expect(subject.send_message).to match(kwl_message)
+    end
+
+    it 'sent with class template url' do
+      Timecop.freeze(print_make_day)
+      allow(slack_notifier_mock).to receive(:ping).with(class_message)
+
+      expect(subject.remind_making_print).to match(class_message)
+    end
+
+    after { Timecop.return }
+  end
 end
