@@ -1,6 +1,10 @@
 require 'active_support'
 require 'active_support/core_ext'
 
+ENV['ESA_TEAM_NAME'] = 'test'
+ENV['ESA_CLASS_TEMPLATE_ID'] = '1'
+ENV['ESA_KWL_TEMPLATE_ID'] = '2'
+
 describe TimeReporter do
   describe 'benkyo day or time' do
     let(:friday) { Time.local(2016, 6, 10) }
