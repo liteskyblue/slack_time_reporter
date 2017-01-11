@@ -63,12 +63,12 @@ describe TimeReporter do
     let(:slack_notifier_mock) { double('Slack::Notifier') }
 
     let(:class_message) do
-      url = "#{TimeReporter::ESA_TEMPLATE_URL_FOR}#{ENV['ESA_CLASS_TEMPLATE_ID']}"
+      url = TimeReporter::ESA_CLASS_TEMPLATE
       "@gouf 勉強会のネタ書いた？\nまだなら書きましょう！\n#{url}"
     end
 
     let(:kwl_message) do
-      url = "#{TimeReporter::ESA_TEMPLATE_URL_FOR}#{ENV['ESA_KWL_TEMPLATE_ID']}"
+      url = TimeReporter::ESA_KWL_TEMPLATE
       "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{url}"
     end
 

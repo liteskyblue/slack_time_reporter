@@ -9,7 +9,9 @@ if development_environment
 end
 
 class TimeReporter
-  ESA_TEMPLATE_URL_FOR = "https://#{ENV['ESA_TEAM_NAME']}.esa.io/posts/new?template_post_id=".freeze
+  ESA_TEMPLATE_BASE_URL = "https://#{ENV['ESA_TEAM_NAME']}.esa.io/posts/new?template_post_id=".freeze
+  ESA_KWL_TEMPLATE = "#{ESA_TEMPLATE_BASE_URL}#{ENV['ESA_KWL_TEMPLATE_ID']}".freeze
+  ESA_CLASS_TEMPLATE = "#{ESA_TEMPLATE_BASE_URL}#{ENV['ESA_CLASS_TEMPLATE_ID']}".freeze
 
   def slack_notifier
     Slack::Notifier.new(
