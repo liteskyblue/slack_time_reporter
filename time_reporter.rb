@@ -25,16 +25,16 @@ class TimeReporter
   def send_message
     return if (benkyo_day? && end_time?).eql? false
     esa_template_id = ENV['ESA_TEMPLATE_ID']
-    url = "#{ESA_TEMPLATE_URL_FOR}#{ENV['ESA_KWL_TEMPLATE_ID']}"
-    message = "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{url}"
+    message = "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{ESA_KWL_TEMPLATE}"
     slack_notifier.ping(message)
+    message
   end
 
   def remind_making_print
-    return if (print_make_day? && remind_time?).eql? false
-    url = "#{ESA_TEMPLATE_URL_FOR}#{ENV['ESA_CLASS_TEMPLATE_ID']}"
-    message = "@gouf 勉強会のネタ書いた？\nまだなら書きましょう！\n#{url}"
+    return 'nothing to do' if (print_make_day? && remind_time?).eql?(false)
+    message = "@gouf 勉強会のネタ書いた？\nまだなら書きましょう！\n#{ESA_CLASS_TEMPLATE}"
     slack_notifier.ping(message)
+    message
   end
 
   def week_day
