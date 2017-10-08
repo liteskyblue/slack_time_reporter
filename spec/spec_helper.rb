@@ -16,8 +16,13 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require_relative '../time_reporter'
+require 'active_support'
+require 'active_support/core_ext'
 require 'timecop'
+require 'dotenv'
+Dotenv.load
+require_relative '../reminder_report'
+require_relative '../end_time_report'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
