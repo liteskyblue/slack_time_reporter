@@ -24,7 +24,6 @@ class TimeReporter
 
   def send_message
     return if (benkyo_day? && end_time?).eql?(false)
-    esa_template_id = ENV['ESA_TEMPLATE_ID']
     message = "@here そろそろ終了時間です。\nKWL の振り返りを書きましょう\n#{ESA_KWL_TEMPLATE}"
     slack_notifier.ping(message)
     message
