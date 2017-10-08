@@ -4,11 +4,11 @@ gem 'slack-notifier'
 gem 'week_of_month'
 
 group :development, :test do
-  gem 'rspec'
+  gem 'activesupport'
+  gem 'dotenv'
   gem 'fuubar'
-  gem 'timecop'
   gem 'guard'
   gem 'guard-rspec'
-  gem 'dotenv'
-  gem 'activesupport'
+  gem 'rspec'
+  gem 'timecop'
 end
