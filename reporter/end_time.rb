@@ -1,4 +1,4 @@
-require './esa_constants'
+require '../esa_constants'
 
 module Reporter
   module EndTime
