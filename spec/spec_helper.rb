@@ -21,8 +21,9 @@ require 'active_support/core_ext'
 require 'timecop'
 require 'dotenv'
 Dotenv.load
-require_relative '../reminder_report'
-require_relative '../end_time_report'
+require_relative '../reporter/reporter'
+require_relative '../reporter/reminder'
+require_relative '../reporter/end_time'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

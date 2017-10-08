@@ -1,5 +1,6 @@
-require './end_time_report'
-require './reminder_report'
+require './reporter/reporter'
+require './reporter/end_time'
+require './reporter/reminder'
 require 'bundler'
 Bundler.require
 
@@ -19,8 +20,8 @@ slack_notifier =
   )
 
 reporters = [
-  RemindTimeReport,
-  EndTimeReport
+  Reporter::RemindTime,
+  Reporter::EndTime
 ]
 
 reporters.reject { |reporter| reporter.message.nil? }

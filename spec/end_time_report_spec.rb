@@ -1,4 +1,7 @@
-describe EndTimeReport do
+include Reporter
+
+describe Reporter::EndTime do
+
   let(:friday) { Time.local(2016, 6, 10) }
   let(:benkyo_day) { Time.local(2016, 6, 25, 15, 20) } # week of month % 2 == 0 && Saturday
   let(:sunday) { Time.local(2016, 6, 12) }
@@ -7,12 +10,12 @@ describe EndTimeReport do
     context 'not benkyo day' do
       it 'is friday' do
         Timecop.freeze(friday)
-        expect(EndTimeReport.message).to be_falsy
+        expect(EndTime.message).to be_falsy
       end
 
       it 'is sunday' do
         Timecop.travel(sunday)
-        expect(EndTimeReport.message).to be_falsy
+        expect(EndTime.message).to be_falsy
       end
     end
 
@@ -24,11 +27,11 @@ describe EndTimeReport do
       end
 
       it 'is saturday' do
-        expect(EndTimeReport.week_day).to eq('土')
+        expect(EndTime.week_day).to eq('土')
       end
 
       it 'is odd week and saturday' do
-        expect(EndTimeReport.benkyo_day?).to be_truthy
+        expect(EndTime.benkyo_day?).to be_truthy
       end
     end
 
@@ -36,7 +39,7 @@ describe EndTimeReport do
       Timecop.freeze(benkyo_day)
       (0..9).each do |n|
         Timecop.travel(benkyo_day + n.minutes)
-        expect(EndTimeReport.end_time?).to be_truthy
+        expect(EndTime.end_time?).to be_truthy
       end
     end
   end
